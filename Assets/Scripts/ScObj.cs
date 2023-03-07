@@ -6,4 +6,9 @@ using UnityEngine;
 public class ScObj : ScriptableObject
 {
     [SerializeField][Tooltip("Accélère le temps !")] public float AccTemps = 1f;
+
+    public float TempsUniversel = 0f;
+
+    public float jour;
+
 }

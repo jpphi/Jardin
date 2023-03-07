@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: 99c44db92a0a05142a7a2da7cfa4f938
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - _scobj: {fileID: 11400000, guid: 83132fd318c0981418bfb072ed82ce79, type: 2}
+  - _go: {fileID: 2396293491939325232, guid: 743f8b74c9975b747bd880812dde16cc, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

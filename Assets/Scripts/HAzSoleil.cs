@@ -15,6 +15,8 @@ public class HAzSoleil : MonoBehaviour
 
     [SerializeField] private Slider _slider;
 
+    //private Temps _temps;
+
     private double declinaison;
     private double angleHoraire;
     private double azimut;
@@ -27,7 +29,12 @@ public class HAzSoleil : MonoBehaviour
         _jour = 181; _heure = 10f;
         _latitude = Mathf.PI * _latitude / 180;
 
+        _scobj.TempsUniversel = 0f;
+
+
         tempo = false;
+
+        //_temps = gameObject.AddComponent<Temps>();
 
         calculHAz(_jour, (float)_heure);
     }
@@ -39,7 +46,10 @@ public class HAzSoleil : MonoBehaviour
         if (tempo)
         {
             tempo = false;
-            _heure = _heure + 1/_scobj.AccTemps;
+            float deltatps = 1 / _scobj.AccTemps;
+            _heure = _heure + deltatps;
+            _scobj.TempsUniversel += deltatps;
+
 
             Debug.Log("HAzSoleil Update. _heure " + _heure + " _scobj.AccTemps " + _scobj.AccTemps);
 
@@ -52,6 +62,12 @@ public class HAzSoleil : MonoBehaviour
                 {
                     _jour = 1;
                 }
+
+                // On change la valeur du coef du shader en fonction du jour
+                //_temps.GestionSaison(); //_jour
+
+                _scobj.jour = _jour;
+
             }
             calculHAz(_jour, (float)_heure);
         }
@@ -87,4 +103,6 @@ public class HAzSoleil : MonoBehaviour
         _scobj.AccTemps = _slider.value;
         Debug.Log("ValueChanged, Temps... : " + _scobj.AccTemps);
     }
+
+ 
 }
