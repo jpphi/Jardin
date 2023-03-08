@@ -26,7 +26,7 @@ public class HAzSoleil : MonoBehaviour
 
     void Start()
     {
-        _jour = 181; _heure = 10f;
+        //_jour = 181; _heure = 10f;
         _latitude = Mathf.PI * _latitude / 180;
 
         _scobj.TempsUniversel = 0f;
@@ -47,29 +47,24 @@ public class HAzSoleil : MonoBehaviour
         {
             tempo = false;
             float deltatps = 1 / _scobj.AccTemps;
-            _heure = _heure + deltatps;
+            _scobj.heure= _scobj.heure + deltatps;
             _scobj.TempsUniversel += deltatps;
 
 
-            Debug.Log("HAzSoleil Update. _heure " + _heure + " _scobj.AccTemps " + _scobj.AccTemps);
+            Debug.Log("HAzSoleil Update. _heure " + _scobj.heure + " _scobj.AccTemps " + _scobj.AccTemps);
 
-            if (_heure >= 24)
+            if (_scobj.heure >= 24)
             {
-                _heure = 0;
-                _jour++;
-
-                if (_jour >= 366)
-                {
-                    _jour = 1;
-                }
+                _scobj.heure = 0;
+                _scobj.jourAn= (_scobj.jourAn >= 366)? 1: _scobj.jourAn + 1;
 
                 // On change la valeur du coef du shader en fonction du jour
                 //_temps.GestionSaison(); //_jour
 
-                _scobj.jour = _jour;
+                _scobj.jour++;
 
             }
-            calculHAz(_jour, (float)_heure);
+            calculHAz(_scobj.jourAn, (float)_scobj.heure);
         }
     }
 

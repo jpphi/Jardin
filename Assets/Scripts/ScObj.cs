@@ -7,8 +7,11 @@ public class ScObj : ScriptableObject
 {
     [SerializeField][Tooltip("Accélère le temps !")] public float AccTemps = 1f;
 
-    public float TempsUniversel = 0f;
+    // Gestion du temps
 
-    public float jour;
+    public float TempsUniversel = 0f;
+    [SerializeField][Tooltip("Jour initialisé au départ simulation !")] public int jourAn;
+    public int jour = 0;
+    [SerializeField][Tooltip("Heure initialisé au départ simulation !")] public float heure;
 
 }
