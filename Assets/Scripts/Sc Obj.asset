@@ -12,4 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d3de04224b34fb4dbae907b744e61ea, type: 3}
   m_Name: Sc Obj
   m_EditorClassIdentifier: 
-  AccTemps: 1
+  latitude: 45
+  AccTemps: 5000
+  pasTemporel: 0.1
+  TempsUniversel: 1835.299
+  jourAn: 19
+  jour: 77
+  heure: 18.000032
+  tictac:
+    m_PersistentCalls:
+      m_Calls: []

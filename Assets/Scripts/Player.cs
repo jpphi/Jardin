@@ -20,8 +20,11 @@ public class Player : MonoBehaviour
     void Start()
     {
         //Debug.Log("Temps... : " + _scobj.AccTemps);
+        _scobj.TempsUniversel = 0f;
+        _scobj.jour = 1;
 
-        StartCoroutine(tempsQuiPasse());
+
+    StartCoroutine(tempsQuiPasse());
 
     }
 

@@ -62,7 +62,7 @@ public class HAzSoleil : MonoBehaviour
         Debug.Log("jourAn= " + _scobj.jourAn + " heure = " + _scobj.heure + " hauteur= " + hauteur + " azimut= " + azimut +
             " _scobj.AccTemps" + _scobj.AccTemps);
 
-        transform.rotation = Quaternion.Euler(hauteur, azimut, 0);
+        transform.rotation = Quaternion.Euler(hauteur, azimut, 0f);
 
     }
 
