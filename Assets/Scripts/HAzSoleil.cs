@@ -6,9 +6,8 @@ using UnityEngine.UI;
 public class HAzSoleil : MonoBehaviour
 {
     // Start is called before the first frame update
-    [SerializeField] private int _jour;
-    [SerializeField] private double _heure;
-    [SerializeField] private double _latitude = 45;
+    //[SerializeField] private int _jour;
+    //[SerializeField] private double _heure;
     //[SerializeField] private float temps = 0.1f;
 
     [SerializeField] private ScObj _scobj;
@@ -17,79 +16,55 @@ public class HAzSoleil : MonoBehaviour
 
     //private Temps _temps;
 
-    private double declinaison;
-    private double angleHoraire;
-    private double azimut;
-    private double hauteur;
+    private float declinaison;
+    private float angleHoraire;
+    private float azimut;
+    private float hauteur;
+    private float _latitude;
 
-    private bool tempo;
+    //private bool tempo;
 
+    private void OnEnable()
+    {
+        Player.EventTicTac += calculHAz; 
+    }
+
+    private void OnDisable()
+    {
+        Player.EventTicTac -= calculHAz;
+
+    }
     void Start()
     {
-        //_jour = 181; _heure = 10f;
-        _latitude = Mathf.PI * _latitude / 180;
 
         _scobj.TempsUniversel = 0f;
 
-
-        tempo = false;
-
-        //_temps = gameObject.AddComponent<Temps>();
-
-        calculHAz(_jour, (float)_heure);
     }
 
     // Update is called once per frame
     void Update()
     {
-        StartCoroutine(tempsQuiPasse());
-        if (tempo)
-        {
-            tempo = false;
-            float deltatps = 1 / _scobj.AccTemps;
-            _scobj.heure= _scobj.heure + deltatps;
-            _scobj.TempsUniversel += deltatps;
-
-
-            Debug.Log("HAzSoleil Update. _heure " + _scobj.heure + " _scobj.AccTemps " + _scobj.AccTemps);
-
-            if (_scobj.heure >= 24)
-            {
-                _scobj.heure = 0;
-                _scobj.jourAn= (_scobj.jourAn >= 366)? 1: _scobj.jourAn + 1;
-
-                // On change la valeur du coef du shader en fonction du jour
-                //_temps.GestionSaison(); //_jour
-
-                _scobj.jour++;
-
-            }
-            calculHAz(_scobj.jourAn, (float)_scobj.heure);
-        }
+ 
     }
 
-    private IEnumerator tempsQuiPasse()
+
+    private void calculHAz() //int j, float h) // j= jour h= heure
     {
-        yield return new WaitForSeconds(1);
-        tempo = true;
+        _latitude = Mathf.PI * _scobj.latitude / 180f;
 
-    }
+        angleHoraire = Mathf.PI * (_scobj.heure / 12f - 1f);
+        declinaison = Mathf.Asin(0.398f * Mathf.Sin((0.985f * (float)_scobj.jourAn - 80f)));
 
-    private void calculHAz(int j, float h) // j= jour h= heure
-    {
-        angleHoraire = Mathf.PI * (h / 12 - 1);
-        declinaison = Mathf.Asin((float)0.398 * Mathf.Sin((float)(0.985 * j - 80)));
+        hauteur = Mathf.Asin(Mathf.Sin(_latitude) * Mathf.Sin(declinaison) + Mathf.Cos(_latitude) *
+            Mathf.Cos(declinaison) * Mathf.Cos(angleHoraire));
 
-        hauteur = Mathf.Asin(Mathf.Sin((float)_latitude) * Mathf.Sin((float)declinaison) + Mathf.Cos((float)_latitude) *
-            Mathf.Cos((float)declinaison) * Mathf.Cos((float)angleHoraire));
+        azimut = Mathf.Asin(Mathf.Cos(declinaison) * Mathf.Sin(angleHoraire) / Mathf.Cos(hauteur));
 
-        azimut = Mathf.Asin(Mathf.Cos((float)declinaison) * Mathf.Sin((float)angleHoraire) / Mathf.Cos((float)hauteur));
+        hauteur = 180f * hauteur / Mathf.PI;
+        azimut = 180f * azimut / Mathf.PI;
+        Debug.Log(" _jour= " + _scobj.jourAn + " heure = " + _scobj.heure + " hauteur= " + hauteur + " azimut= " + azimut);
 
-        hauteur = 180 * hauteur / Mathf.PI;
-        azimut = 180 * azimut / Mathf.PI;
-        Debug.Log(" _jour= " + _jour + " heure = " + h + " hauteur= " + hauteur + " azimut= " + azimut);
-
-        transform.rotation = Quaternion.Euler((float)hauteur, (float)azimut, 0);
+        transform.rotation = Quaternion.Euler(hauteur, azimut, 0);
 
     }
 
@@ -99,5 +74,4 @@ public class HAzSoleil : MonoBehaviour
         Debug.Log("ValueChanged, Temps... : " + _scobj.AccTemps);
     }
 
- 
 }
