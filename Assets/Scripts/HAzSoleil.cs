@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class HAzSoleil : MonoBehaviour
 {
@@ -11,8 +10,6 @@ public class HAzSoleil : MonoBehaviour
     //[SerializeField] private float temps = 0.1f;
 
     [SerializeField] private ScObj _scobj;
-
-    [SerializeField] private Slider _slider;
 
     //private Temps _temps;
 
@@ -62,16 +59,12 @@ public class HAzSoleil : MonoBehaviour
 
         hauteur = 180f * hauteur / Mathf.PI;
         azimut = 180f * azimut / Mathf.PI;
-        Debug.Log(" _jour= " + _scobj.jourAn + " heure = " + _scobj.heure + " hauteur= " + hauteur + " azimut= " + azimut);
+        Debug.Log("jourAn= " + _scobj.jourAn + " heure = " + _scobj.heure + " hauteur= " + hauteur + " azimut= " + azimut +
+            " _scobj.AccTemps" + _scobj.AccTemps);
 
         transform.rotation = Quaternion.Euler(hauteur, azimut, 0);
 
     }
 
-    public void ValueChanged()
-    {
-        _scobj.AccTemps = _slider.value;
-        Debug.Log("ValueChanged, Temps... : " + _scobj.AccTemps);
-    }
-
+  
 }

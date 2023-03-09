@@ -846,6 +846,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _scobj: {fileID: 11400000, guid: 83132fd318c0981418bfb072ed82ce79, type: 2}
+  _slider: {fileID: 574535150}
 --- !u!1 &392348460
 GameObject:
   m_ObjectHideFlags: 0
@@ -1109,10 +1110,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 584190935fdb13b46a2878575b6c146a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _heure: 0
-  _latitude: 45
   _scobj: {fileID: 11400000, guid: 83132fd318c0981418bfb072ed82ce79, type: 2}
-  _slider: {fileID: 574535150}
 --- !u!1 &464725612
 GameObject:
   m_ObjectHideFlags: 0
@@ -2164,10 +2162,10 @@ MonoBehaviour:
   m_FillRect: {fileID: 2070728127}
   m_HandleRect: {fileID: 135694060}
   m_Direction: 0
-  m_MinValue: 0.1
-  m_MaxValue: 1000
+  m_MinValue: 1
+  m_MaxValue: 5000
   m_WholeNumbers: 0
-  m_Value: 500
+  m_Value: 700
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:

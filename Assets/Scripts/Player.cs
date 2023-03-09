@@ -1,13 +1,15 @@
 using System.Collections;
 //using System.Collections.Generic;
+using UnityEngine.UI;
 
 using UnityEngine;
 
-using UnityEngine.Events;
+//using UnityEngine.Events;
 
 public class Player : MonoBehaviour
 {
     [SerializeField] private ScObj _scobj;
+    [SerializeField] private Slider _slider;
 
     private bool tempo = false;
 
@@ -49,10 +51,8 @@ public class Player : MonoBehaviour
 
             }
             //calculHAz(_scobj.jourAn, _scobj.heure);
-            if( EventTicTac!= null )
-            {
-                EventTicTac();
-            }
+
+            EventTicTac?.Invoke();
 
             StartCoroutine(tempsQuiPasse());
         }
@@ -71,6 +71,13 @@ public class Player : MonoBehaviour
         tempo = true;
 
     }
+
+    public void ValueChanged()
+    {
+        _scobj.AccTemps = _slider.value;
+        Debug.Log("ValueChanged, Temps... : " + _scobj.AccTemps);
+    }
+
 
 
 }

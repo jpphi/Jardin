@@ -6,6 +6,10 @@ public class LemonTree3wFruits : MonoBehaviour
 {
     [SerializeField] private ScObj _scobj;
 
+    private const float TAILLEMAX = 2f;
+    private const float FACTEUR_CROISSANCE_MAX = 1.001f;
+    private const float FACTEUR_CROISSANCE_MIN = 1.0001f;
+
     private void OnEnable()
     {
         Player.EventTicTac += grandir;
@@ -32,6 +36,11 @@ public class LemonTree3wFruits : MonoBehaviour
 
     void grandir()
     {
+        if(transform.localScale.x < TAILLEMAX)
+        {
+            float fc = Random.Range(FACTEUR_CROISSANCE_MIN, FACTEUR_CROISSANCE_MAX);
+            transform.localScale *= fc;
+        }
 
     }
 }
