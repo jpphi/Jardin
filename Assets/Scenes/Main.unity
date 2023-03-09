@@ -352,7 +352,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 46707521}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.69}
+  m_LocalPosition: {x: 0, y: 0, z: -0.33}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -362,7 +362,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 33.312, y: 6.953}
+  m_AnchoredPosition: {x: 33.312, y: 5.72}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &46707523
@@ -3977,6 +3977,7 @@ GameObject:
   - component: {fileID: 1187903708}
   - component: {fileID: 1187903707}
   - component: {fileID: 1187903711}
+  - component: {fileID: 1187903712}
   m_Layer: 0
   m_Name: Ground
   m_TagString: Untagged
@@ -4018,7 +4019,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 04ad9ab75058976478e753c33a41ba9f, type: 2}
+  - {fileID: 2100000, guid: 4f9c8814d90b0d648bf1dc6259f33a5c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4153,6 +4154,20 @@ MonoBehaviour:
   m_Teleporting:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1187903712
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1187903706}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc28f554302205842898c038300912b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _scobj: {fileID: 11400000, guid: 83132fd318c0981418bfb072ed82ce79, type: 2}
+  rd: {fileID: 1187903708}
 --- !u!1 &1212717483 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1473601184474156, guid: 67762154df3b7ca4eaaebcc646c11bbf,
