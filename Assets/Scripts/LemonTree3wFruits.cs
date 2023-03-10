@@ -45,7 +45,8 @@ public class LemonTree3wFruits : MonoBehaviour
     {
         if(transform.localScale.x < tailleMax)
         {
-            transform.localScale *= fc;
+            //transform.localScale *= fc;
+            this.transform.localScale *= fc;
         }
         else // On ne peut plus grandir, on se désabonne
         {
