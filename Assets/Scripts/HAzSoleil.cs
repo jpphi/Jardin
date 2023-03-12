@@ -23,12 +23,12 @@ public class HAzSoleil : MonoBehaviour
 
     private void OnEnable()
     {
-        Player.EventTicTac += calculHAz; 
+        TempsQuiPasse.EventTicTac += calculHAz; 
     }
 
     private void OnDisable()
     {
-        Player.EventTicTac -= calculHAz;
+        TempsQuiPasse.EventTicTac -= calculHAz;
 
     }
     void Start()
@@ -60,7 +60,7 @@ public class HAzSoleil : MonoBehaviour
         hauteur = 180f * hauteur / Mathf.PI;
         azimut = 180f * azimut / Mathf.PI;
         Debug.Log("jourAn= " + _scobj.jourAn + " heure = " + _scobj.heure + " hauteur= " + hauteur + " azimut= " + azimut +
-            " _scobj.AccTemps" + _scobj.AccTemps);
+            " _scobj.PasTemporel " + _scobj.pasTemporel);
 
         transform.rotation = Quaternion.Euler(hauteur, azimut, 0f);
 

@@ -9,7 +9,7 @@ public class ScObj : ScriptableObject
     [SerializeField] public float latitude = 45f;
 
     // Gestion du temps
-    [SerializeField][Tooltip("Accélère le temps !")] public float AccTemps= 500f;
+    //[SerializeField][Tooltip("Accélère le temps !")] public float PasTemporel= 0.1f;
     [SerializeField][Tooltip("Pas temporel: recalcul tout les paramètres.")] public float pasTemporel= 0.1f;
 
 

@@ -11,13 +11,13 @@ public class Ground : MonoBehaviour
 
     private void OnEnable()
     {
-        Player.EventTicTac += GestionSaisonGround;
+        TempsQuiPasse.EventTicTac += GestionSaisonGround;
         rd = GetComponent<Renderer>();
     }
 
     private void OnDisable()
     {
-        Player.EventTicTac -= GestionSaisonGround;
+        TempsQuiPasse.EventTicTac -= GestionSaisonGround;
     }
 
     public void GestionSaisonGround() //float j

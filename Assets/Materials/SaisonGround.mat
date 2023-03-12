@@ -105,7 +105,7 @@ Material:
     - _BumpScale: 1
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
-    - _CoefS1S2G: -10
+    - _CoefS1S2G: -2.66
     - _Cull: 2
     - _Cutoff: 0.5
     - _DetailAlbedoMapScale: 1

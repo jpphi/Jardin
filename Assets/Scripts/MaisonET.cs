@@ -12,13 +12,13 @@ public class MaisonET : MonoBehaviour
 
     private void OnEnable()
     {
-        Player.EventTicTac += VieillissementPeinture;
+        TempsQuiPasse.EventTicTac += VieillissementPeinture;
         rd = GetComponent<Renderer>();
     }
 
     private void OnDisable()
     {
-        Player.EventTicTac -= VieillissementPeinture;
+        TempsQuiPasse.EventTicTac -= VieillissementPeinture;
     }
 
     // Start is called before the first frame update
@@ -37,7 +37,7 @@ public class MaisonET : MonoBehaviour
     {
         int j = _scobj.jour;
 
-        CoefV = (CoefV >= 1)?1: (float)j / 100f;
+        CoefV = (CoefV >= 1)?1: ((float)j - 101f)/ 100f;
 
         //change the Material properties
 
@@ -46,7 +46,7 @@ public class MaisonET : MonoBehaviour
         //Debug.Log("ICI material " + rd.material + " coef = " + coef + " _CoefS1S2= " + mpb.GetFloat("_CoefS1S2")  +" --- " +
         //    rd.material.shader.GetPropertyDescription(2) + " --- "  );
         Debug.Log("VieillissementPeinture: Jour= " + j + " CoefV= " + CoefV);
-        rd.material.SetFloat("_CoefRV", CoefV);
+        rd.material.SetFloat("_CoefT1T2", CoefV);
 
 
     }

@@ -13,13 +13,13 @@ public class GestionSaisonHerbe : MonoBehaviour
 
     private void OnEnable()
     {
-        Player.EventTicTac += GestionSaison;
+        TempsQuiPasse.EventTicTac += GestionSaison;
         rd = GetComponent<Renderer>();
     }
 
     private void OnDisable()
     {
-        Player.EventTicTac -= GestionSaison;
+        TempsQuiPasse.EventTicTac -= GestionSaison;
     }
 
 

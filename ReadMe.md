@@ -13,4 +13,11 @@ Voir unJardin.pdf
 ## Caratéristiques techniques
 Développer sur unity 2021.3.19f
 
+## Bugs et amélioration
+Bug sur la position du soleil
+Changer le déclenchement de la téléportation
+Mettre des calques différenciés (teleportation, objet grabable,...)
+Instanciation d'objets (nouveau arbrres, dalles sol,...)
+
+
 

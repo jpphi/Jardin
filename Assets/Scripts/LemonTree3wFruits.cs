@@ -10,19 +10,17 @@ public class LemonTree3wFruits : MonoBehaviour
 
     private const float TAILLE_MIN = 1f, TAILLE_MAX = 2.5f;
 
-    private float tailleMax;
-    private float fc;
+    private float tailleMax, fc;
     
 
     private void OnEnable()
     {
-        Player.EventTicTac += grandir;
+        TempsQuiPasse.EventTicTac += grandir;
     }
 
     private void OnDisable()
     {
-        Player.EventTicTac -= grandir;
-
+        TempsQuiPasse.EventTicTac -= grandir;
     }
 
 
@@ -35,22 +33,16 @@ public class LemonTree3wFruits : MonoBehaviour
         //Debug.Log("LemonTree3wFruits fc= " + fc + " tailleMax= " + tailleMax);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     void grandir()
     {
         if(transform.localScale.x < tailleMax)
         {
-            //transform.localScale *= fc;
-            this.transform.localScale *= fc;
+            transform.localScale *= fc;
+            //this.transform.localScale *= fc;
         }
         else // On ne peut plus grandir, on se désabonne
         {
-            Player.EventTicTac -= grandir;
+            TempsQuiPasse.EventTicTac -= grandir;
         }
     }
 }

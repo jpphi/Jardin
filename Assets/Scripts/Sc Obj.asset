@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: Sc Obj
   m_EditorClassIdentifier: 
   latitude: 45
-  AccTemps: 5000
-  pasTemporel: 0.1
-  TempsUniversel: 1835.299
-  jourAn: 19
-  jour: 77
-  heure: 18.000032
+  AccTemps: 3733.0205
+  pasTemporel: 0.01
+  TempsUniversel: 78805.82
+  jourAn: 268
+  jour: 2075
+  heure: 7.592101
   tictac:
     m_PersistentCalls:
       m_Calls: []
