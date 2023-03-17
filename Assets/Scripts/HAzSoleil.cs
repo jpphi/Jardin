@@ -59,8 +59,9 @@ public class HAzSoleil : MonoBehaviour
 
         hauteur = 180f * hauteur / Mathf.PI;
         azimut = 180f * azimut / Mathf.PI;
-        Debug.Log("jourAn= " + _scobj.jourAn + " heure = " + _scobj.heure + " hauteur= " + hauteur + " azimut= " + azimut +
-            " _scobj.PasTemporel " + _scobj.pasTemporel);
+
+        //Debug.Log("jourAn= " + _scobj.jourAn + " heure = " + _scobj.heure + " hauteur= " + hauteur + " azimut= " + azimut +
+        //    " _scobj.PasTemporel " + _scobj.pasTemporel);
 
         transform.rotation = Quaternion.Euler(hauteur, azimut, 0f);
 

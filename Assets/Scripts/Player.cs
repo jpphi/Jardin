@@ -25,7 +25,7 @@ public class Player : MonoBehaviour
 
     public void Quitter()
     {
-        Debug.Log("Quitter !");
+        //Debug.Log("Quitter !");
 
         Application.Quit();
     }
@@ -34,7 +34,7 @@ public class Player : MonoBehaviour
     public void ValueChangedPasTemporel()
     {
         _scobj.pasTemporel = _slider.value;
-        Debug.Log("ValueChangedPasTemporel, PasTemporel... : " + _scobj.pasTemporel);
+        //Debug.Log("ValueChangedPasTemporel, PasTemporel... : " + _scobj.pasTemporel);
     }
 
 }

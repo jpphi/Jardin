@@ -39,10 +39,6 @@ public class TempsQuiPasse : MonoBehaviour
             _scobj.heure += _scobj.pasTemporel;
             _scobj.TempsUniversel += _scobj.pasTemporel;
 
-
-            Debug.Log("TempsQuiPasse Update. jourAn= " + _scobj.jourAn + " heure " + _scobj.heure + " _scobj.PasTemporel " + _scobj.pasTemporel +
-                " jour " + _scobj.jour + " Rafraichissement " + rafraichissement);
-
             if (_scobj.heure >= 24)
             {
                 _scobj.heure = _scobj.heure % 24;
@@ -54,7 +50,11 @@ public class TempsQuiPasse : MonoBehaviour
                 _scobj.jour++;
 
             }
- 
+
+            //Debug.Log("TempsQuiPasse Update. jourAn= " + _scobj.jourAn + " heure " + _scobj.heure + " _scobj.PasTemporel " + _scobj.pasTemporel +
+            //    " jour " + _scobj.jour + " Rafraichissement " + rafraichissement);
+
+
             EventTicTac?.Invoke();
 
             StartCoroutine(tempsQuiPasse());
@@ -71,7 +71,7 @@ public class TempsQuiPasse : MonoBehaviour
     public void ValueChangedRafraichissement()
     {
         rafraichissement = _slider.value;
-        Debug.Log("ValueChangedRafraichissement, rafraichissement... : " + rafraichissement);
+        //Debug.Log("ValueChangedRafraichissement, rafraichissement... : " + rafraichissement);
     }
 
 }

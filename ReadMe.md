@@ -1,6 +1,8 @@
 # Projet jardin
 Imaginer ce que deviendra un jardin paysager dans x années.
 
+Mise à jour 17/03/23
+
 Voir unJardin.pdf  
 
 ## Caractéristiques
@@ -18,6 +20,12 @@ Bug sur la position du soleil
 Changer le déclenchement de la téléportation
 Mettre des calques différenciés (teleportation, objet grabable,...)
 Instanciation d'objets (nouveau arbrres, dalles sol,...)
+
+Intégration d'un personnage (Demande). Ce personnage devrait pouvoir se déplacer => faire un panneau de controle. Son utilité pourrait être de transporter une caméra permettant 2 points de vu. Le point de vu player et le point de vu personnage.
+Ce personnage devrait pouvoir se piloter avec l'une des manettes en utilisant le joystick => problème récupération entrée en VR non résolu.
+
+L'accélération du temps créer un effet de clignottement désagréable => donner la possibilité d'inhiber le passage jour/nuit
+
 
 
 

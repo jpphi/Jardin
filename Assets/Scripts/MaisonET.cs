@@ -45,7 +45,7 @@ public class MaisonET : MonoBehaviour
 
         //Debug.Log("ICI material " + rd.material + " coef = " + coef + " _CoefS1S2= " + mpb.GetFloat("_CoefS1S2")  +" --- " +
         //    rd.material.shader.GetPropertyDescription(2) + " --- "  );
-        Debug.Log("VieillissementPeinture: Jour= " + j + " CoefV= " + CoefV);
+        //Debug.Log("VieillissementPeinture: Jour= " + j + " CoefV= " + CoefV);
         rd.material.SetFloat("_CoefT1T2", CoefV);
 
 

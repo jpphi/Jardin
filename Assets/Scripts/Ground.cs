@@ -32,7 +32,8 @@ public class Ground : MonoBehaviour
 
         //Debug.Log("ICI material " + rd.material + " coef = " + coef + " _CoefS1S2= " + mpb.GetFloat("_CoefS1S2")  +" --- " +
         //    rd.material.shader.GetPropertyDescription(2) + " --- "  );
-        Debug.Log("GestionSaisonGround: Jour= " + j + " Coef= " + coef);
+        
+        //Debug.Log("GestionSaisonGround: Jour= " + j + " Coef= " + coef);
         rd.material.SetFloat("_CoefS1S2G", coef);
 
 
