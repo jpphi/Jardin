@@ -10,25 +10,38 @@ public class NavMeshScript : MonoBehaviour
 
     private const float TESTARRIVE = 0.2f;
 
-    [SerializeField] private GameObject destination;
+    //[SerializeField] private GameObject destination;
 
     private GameObject[] destinations;
 
-    private int position = 0, positionEnd= 0;
+    private int position = 0, nbPoints= 0;
+
+    private float _force = 300f, velocity= 0f;
+
     // Start is called before the first frame update
     void Start()
     {
         _animatorController = GetComponent<Animator>();
         _navMashAgent= GetComponent<NavMeshAgent>();
 
-        _navMashAgent.SetDestination(destination.transform.position);
 
         destinations= GameObject.FindGameObjectsWithTag("NavMeshPoint");
 
-        positionEnd = destinations.Length -1;
-        position= 0;
+        //positionEnd = destinations.Length -1;
+        nbPoints= destinations.Length;
 
-        Debug.Log("destinations count " + positionEnd);
+        if (nbPoints > 1 )
+        {
+            position = 1;
+            _navMashAgent.SetDestination(destinations[position].transform.position);
+
+        }
+
+        //Debug.Log("destinations count " + positionEnd);
+
+        _animatorController.SetTrigger("Jump");
+        GetComponent<Rigidbody>().AddForce(Vector3.up * _force);
+
     }
 
     // Update is called once per frame
@@ -38,18 +51,33 @@ public class NavMeshScript : MonoBehaviour
             " _navMashAgent.destination " + _navMashAgent.destination + " _navMashAgent.destination Magnitude " + 
             (_navMashAgent.destination - transform.position).magnitude);
 
-        if ( (_navMashAgent.destination - transform.position).magnitude < TESTARRIVE)
+        if ((_navMashAgent.destination - transform.position).magnitude < TESTARRIVE)
         {
             Debug.Log("En route vers: " + destinations[position].transform.position);
             position++;
-            if (position >= destinations.Length)
+            if (position >= nbPoints)
             {
                 position = 0;
             }
             _navMashAgent.SetDestination(destinations[position].transform.position);
+
+            _animatorController.SetTrigger("Jump");
+            GetComponent<Rigidbody>().AddForce(Vector3.up * _force);
+
         }
 
-        //_animatorController.SetFloat("Speed", _navMashAgent.velocity.magnitude);
+        velocity = Mathf.Clamp(_navMashAgent.velocity.magnitude, 0f, 5f); //  * Time.deltaTime 
+        _animatorController.SetFloat("Speed", velocity);
 
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            Debug.Log("Contact sol");
+
+            _animatorController.SetTrigger("TouchGround");
+        }
     }
 }
