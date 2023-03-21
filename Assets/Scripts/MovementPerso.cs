@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class NavMeshScript : MonoBehaviour
+public class MovementPerso : MonoBehaviour
 {
     private Animator _animatorController;
     private NavMeshAgent _navMashAgent;
@@ -24,52 +24,66 @@ public class NavMeshScript : MonoBehaviour
         _animatorController = GetComponent<Animator>();
         _navMashAgent= GetComponent<NavMeshAgent>();
 
-
         destinations= GameObject.FindGameObjectsWithTag("NavMeshPoint");
 
-        //positionEnd = destinations.Length -1;
-        nbPoints= destinations.Length;
+        nbPoints = destinations.Length;
 
-        if (nbPoints > 1 )
+        InitBehavior();
+
+        //_animatorController.SetTrigger("Jump");
+        //GetComponent<Rigidbody>().AddForce(Vector3.up * _force);
+
+    }
+
+    public void InitBehavior()
+    {
+        if (nbPoints > 1)
         {
-            position = 1;
+            //position = 1;
+            _navMashAgent.isStopped = false;
+
             _navMashAgent.SetDestination(destinations[position].transform.position);
 
         }
 
-        //Debug.Log("destinations count " + positionEnd);
-
-        _animatorController.SetTrigger("Jump");
-        GetComponent<Rigidbody>().AddForce(Vector3.up * _force);
-
     }
 
-    // Update is called once per frame
-    void Update()
+    public void MovePerso()
     {
-        Debug.Log("En route vers avant if: " + destinations[position].transform.position + " position perso " + transform.position +
-            " _navMashAgent.destination " + _navMashAgent.destination + " _navMashAgent.destination Magnitude " + 
-            (_navMashAgent.destination - transform.position).magnitude);
+        //Debug.Log("En route vers avant if: " + destinations[position].transform.position + " position perso " + transform.position +
+        //    " _navMashAgent.destination " + _navMashAgent.destination + " _navMashAgent.destination Magnitude " +
+        //    (_navMashAgent.destination - transform.position).magnitude);
+
+        _navMashAgent.isStopped = false;
 
         if ((_navMashAgent.destination - transform.position).magnitude < TESTARRIVE)
         {
-            Debug.Log("En route vers: " + destinations[position].transform.position);
             position++;
             if (position >= nbPoints)
             {
                 position = 0;
             }
+
+            Debug.Log("Arrivée... ! En route vers: " + destinations[position].transform.position);
             _navMashAgent.SetDestination(destinations[position].transform.position);
 
-            _animatorController.SetTrigger("Jump");
-            GetComponent<Rigidbody>().AddForce(Vector3.up * _force);
+            //_animatorController.SetTrigger("Jump");
+            //GetComponent<Rigidbody>().AddForce(Vector3.up * _force);
 
         }
 
-        velocity = Mathf.Clamp(_navMashAgent.velocity.magnitude, 0f, 5f); //  * Time.deltaTime 
+        velocity = Mathf.Clamp(_navMashAgent.velocity.magnitude, 0f, 9f); //  * Time.deltaTime 
         _animatorController.SetFloat("Speed", velocity);
 
     }
+
+
+    public void StopPerso()
+    {
+        _navMashAgent.isStopped = true;
+        _animatorController.SetFloat("Speed", 0f);
+    }
+
 
     private void OnCollisionEnter(Collision collision)
     {
