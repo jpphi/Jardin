@@ -47,7 +47,6 @@ public class StatePerso : MonoBehaviour
                 break;
 
             case PersoState.Talk:
-                //GetComponent<Animator>().SetBool("Talk", true);
                 break;
         }
 
