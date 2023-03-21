@@ -72,6 +72,7 @@ public class MovementPerso : MonoBehaviour
 
         }
 
+        Debug.Log("Velocity: ? _navMashAgent.velocity.magnitude= " + _navMashAgent.velocity.magnitude);
         velocity = Mathf.Clamp(_navMashAgent.velocity.magnitude, 0f, 9f); //  * Time.deltaTime 
         _animatorController.SetFloat("Speed", velocity);
 
@@ -81,6 +82,7 @@ public class MovementPerso : MonoBehaviour
     public void StopPerso()
     {
         _navMashAgent.isStopped = true;
+        _navMashAgent.velocity = Vector3.zero;
         _animatorController.SetFloat("Speed", 0f);
     }
 
